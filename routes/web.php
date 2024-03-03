@@ -2,14 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListProductController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/test-web', function () {
-//     return view('test');
-// });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/contact', [HomeController::class, 'contact']);
+
+Route::get('/list-product/{id}/{name}',  [ListProductController::class, 'show']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'contact']);
+});
